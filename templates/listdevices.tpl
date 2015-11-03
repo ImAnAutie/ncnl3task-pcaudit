@@ -16,7 +16,7 @@
     <td>{$device.make}</td>
     <td>{$device.comment}</td>
     <td>{$device.working}</td>
-    <td><a href="user.php?id={$device.userid}">{$device.username}</a></td>
+    <td><a href="user.php?id={$device.userid}">{$device.first_name} {$device.last_name}</a></td>
     <td><a href="deletedevice.php?id={$device.id}&roomid={$device.roomid}"><button id="delete" name="delete" class="btn btn-danger">DELETE</button></a></td>
   </tr>
 {/foreach}

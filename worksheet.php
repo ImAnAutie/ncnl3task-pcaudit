@@ -29,7 +29,7 @@ foreach ($allrooms as &$room) {
     $objPHPExcel->getActiveSheet()->SetCellValue('C'."1", "Type");
     $objPHPExcel->getActiveSheet()->SetCellValue('D'."1", "Make");
     $objPHPExcel->getActiveSheet()->SetCellValue('E'."1", "Working?");
-    $objPHPExcel->getActiveSheet()->SetCellValue('F'."1", "Added by Username");
+    $objPHPExcel->getActiveSheet()->SetCellValue('F'."1", "Added by User");
     $objPHPExcel->getActiveSheet()->SetCellValue('G'."1", "Comments");
     $objPHPExcel->getActiveSheet()->getStyle('A1:G1')->getFont()->setBold(true);
 
@@ -40,7 +40,7 @@ foreach ($devices as &$row) {
     $objPHPExcel->getActiveSheet()->SetCellValue('C'.$rowCount, $row['type']);
     $objPHPExcel->getActiveSheet()->SetCellValue('D'.$rowCount, $row['make']);
     $objPHPExcel->getActiveSheet()->SetCellValue('E'.$rowCount, $row['working']);
-    $objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount, $row['username']);
+    $objPHPExcel->getActiveSheet()->SetCellValue('F'.$rowCount, $row['first_name'] . ' ' . $row['last_name']);
     $objPHPExcel->getActiveSheet()->SetCellValue('G'.$rowCount, $row['comment']);
     $rowCount++;
 }
