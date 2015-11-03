@@ -1,0 +1,17 @@
+<?php
+require('config.php');
+require('Classes/PHPExcel.php');
+
+$sql = "SELECT * FROM devices";
+$result = $conn->query($sql);
+
+$objPHPExcel = new PHPExcel();
+$objPHPExcel->setActiveSheetIndex(0);
+$rowCount = 1;
+while($row = $result->fetch_assoc()) {
+    $objPHPExcel->getActiveSheet()->SetCellValue('A'.$rowCount, $row['device_hbnumber']);
+    $objPHPExcel->getActiveSheet()->SetCellValue('B'.$rowCount, $row['device_makeid']);
+    $rowCount++;
+}
+$objWriter = new PHPExcel_Writer_Excel2007($objPHPExcel);
+$objWriter->save('some_excel_file.xlsx');
