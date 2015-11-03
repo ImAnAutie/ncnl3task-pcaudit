@@ -24,6 +24,11 @@ while($row = $result->fetch_assoc()) {
   $fusername=$row['user_name'];
   $smarty->assign("fusername",$fusername);
 
+  $f_first_name=$row['first_name'];
+  $smarty->assign("f_first_name",$f_first_name);
+  $f_last_name=$row['last_name'];
+  $smarty->assign("f_last_name",$f_last_name);
+
 }
 
 include('getdevicesforuser.php');

@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    User:{$fusername}
+                    User:{$f_first_name} {$f_last_name} ({$fusername})
                 </h1>
 <div class="row">
         <div class="col-sm-2">
@@ -79,7 +79,7 @@ totalbytypedata=JSON.parse(data);
 
             </div>
                 <hr />
-                <h3>Devices {$fusername} has added</h3>
+                <h3>Devices {$first_name} has added</h3>
                 {include file='listdevices.tpl'}
                 <hr>
         </div>
