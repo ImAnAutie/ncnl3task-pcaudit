@@ -38,7 +38,7 @@ if ($result->num_rows > 0) {
 $floor['id']=$floorid;
 $floor['name']=$row['floor'];
 $floor['rooms']=$rooms;
-$floors[]=$floor;
+$floors[$floorid]=$floor;
 }
 }
 

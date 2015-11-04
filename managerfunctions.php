@@ -7,5 +7,8 @@
 
 require_once('config.php');
 
+$smarty->assign("loggedin",$loggedin);
 include('getfloorrooms.php');
-$smarty->display('broadcastmessage.tpl');
+
+require_once('manageronly.php');
+$smarty->display('managerfunctions.tpl');

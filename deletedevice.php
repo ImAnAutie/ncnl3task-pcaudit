@@ -1,8 +1,6 @@
 <?php
-require 'libs/Smarty.class.php';
 require_once('config.php');
-$smarty = new Smarty;
-require_once('config.php');
+require_once('loginneeded.php');
 
 $deviceid=$_GET['id'];
 $roomname=$_GET['roomid'];

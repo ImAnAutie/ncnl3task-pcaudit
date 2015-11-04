@@ -5,10 +5,8 @@
  * @package pcaudit
  */
 
-require 'libs/Smarty.class.php';
 require_once('config.php');
 require_once('loginneeded.php');
-$smarty = new Smarty;
 
 $fuserid=$_GET['id'];
 

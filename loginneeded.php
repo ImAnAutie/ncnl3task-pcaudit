@@ -7,4 +7,6 @@ if ($_SESSION['loggedin']!="1") {
           header('Location: ' . $url);
           die();
 }
+require_once('get_user_role.php');
+
 ?>

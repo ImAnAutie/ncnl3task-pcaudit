@@ -18,6 +18,9 @@
                   <a href="login.php"><button id="login" name="login" class="btn btn-success">Login</button></a> <a href="signup.php"><button id="signup" name="signup" class="btn btn-success">Signup</button></a>
                 {else}
                 <a href="logout.php"><button id="logout" name="logout" class="btn btn-success">Logout {$first_name} {$last_name}</button></a>                 <a href="user.php?id={$userid}"><button id="myuserinfo" name="myuserinfo" class="btn btn-success">My user info</button></a>
+                                {if $userrole eq '1'}
+                                  <a href="managerfunctions.php"><button id="managerfunctions" name="managerfunctions" class="btn btn-primary">Manager Functions</button></a>
+                                {/if}
                 <a href="worksheet.php"><button id="worksheet" name="worksheet" class="btn btn-primary">Worksheet</button></a>
 
                 {/if}
@@ -193,7 +196,7 @@ pubnub.subscribe({
 <script>
 pubnub.subscribe({
     channel: 'broadcastmessage',
-    disconnect : function() {swal("Connection lost","The connection to the server has been lost. Please check your connection and then refresh the page. If it continue's please speak to Gregory","error")}, 
+    disconnect : function() {swal("Connection lost","The connection to the server has been lost. Please check your connection and then refresh the page. If it continue's please speak to Gregory","error")},
     message: function(m){
         if (m['title']) {
           console.log(m);

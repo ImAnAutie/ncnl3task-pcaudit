@@ -1,7 +1,5 @@
 <?php
 require('config.php');
-require 'libs/Smarty.class.php';
-$smarty = new Smarty;
 
 require('testexcel/Classes/PHPExcel.php');
 

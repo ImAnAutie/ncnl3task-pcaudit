@@ -5,7 +5,6 @@
  * @package pcaudit
  */
 
-require 'libs/Smarty.class.php';
 require_once('config.php');
           session_destroy();
           $url="index.php";

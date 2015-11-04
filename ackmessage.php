@@ -5,9 +5,7 @@
  * @package pcaudit
  */
 
-require 'libs/Smarty.class.php';
 require_once('config.php');
-$smarty = new Smarty;
 
 $messageid=$_GET['id'];
 $sql = "SELECT * FROM messages WHERE messageid='$messageid'";
