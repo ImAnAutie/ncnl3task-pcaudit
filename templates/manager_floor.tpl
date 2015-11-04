@@ -1,4 +1,3 @@
-{debug}
 {config_load file='config.conf'}
 
 <!DOCTYPE html> <html lang="en"> <head>
@@ -82,7 +81,7 @@
 
 {foreach from=$floor_rooms.rooms item=room key=roomid}
 <div id="ROOM_{$roomid}">
-<h3><b>{$room.name}</b></h3>
+<h5><b>{$room.name}</b></h5>
 
 <table style="width:100%">
   <tr>
@@ -95,22 +94,22 @@
     <tr>
       <td>{$assign.first_name}</td>
       <td>{$assign.last_name}</td>
-      <td><a href="manager_assign_delete.php?id={$assignid}"><button id="delete_assign_{$assignid}" name="delete_assign_{$assignid}" class="btn btn-primary">Remove Assignment</button></a></td>
+      <td><a href="manager_assign_delete.php?id={$assignid}&floorid={$floorid}"><button id="delete_assign_{$assignid}" name="delete_assign_{$assignid}" class="btn btn-primary">Remove Assignment</button></a></td>
   </tr>
   {/foreach}
 </table>
+<br>
+<br>
 
-
-<a href="manager_room.php?id={$roomid}"><button id="manage_room_{$roomid}" name="{$roomid}" class="btn btn-primary">Manage {$room.name}</button></a>
-
+{include file='user_add_form.tpl'}
 <a href="manager_delete_room.php?id={$roomid}"><button id="delete_room_{$roomid}" name="{$roomid}" class="btn btn-danger">DELETE {$room.name}</button></a>
 
 
 </div>
 <br />
+<legend></legend>
+<br>
 {/foreach}
-
-
 
         <!-- Footer -->
         {include file='footer.tpl'}

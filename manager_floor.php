@@ -8,10 +8,7 @@
 require_once('config.php');
 
 $smarty->assign("loggedin",$loggedin);
-include('getfloorrooms.php');
-
-
-
+require_once('getfloorrooms.php');
 $floorid=$_GET['id'];
 $sql = "SELECT floor FROM floors WHERE floorid='$floorid' limit 1";
 $result2 = $conn->query($sql);
@@ -31,4 +28,5 @@ $smarty->assign('floorid',$floorid);
 require_once('manageronly.php');
 
 require_once('get_all_rooms_for_floor.php');
+require_once('get_all_users.php');
 $smarty->display('manager_floor.tpl');

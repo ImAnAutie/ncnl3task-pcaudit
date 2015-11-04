@@ -62,16 +62,15 @@ if (mysqli_query($conn, $sql)) {
       $newdevicenotification['last_name']=$row2['last_name'];
       $newdevicenotification['userid']=$userid;
       $newdevicenotification['roomid']=$roomid;
-      print_r($newdevicenotification);
-      echo ("<br />");
+//      print_r($newdevicenotification);
+//      echo ("<br />");
       $pubnub->setAuthKey($key);
       print_r($pubnub->publish('device_add',$newdevicenotification));
-      die();
       $url="room.php?id=$roomid&justdone=1";
       header("Location: $url");
       die();
 } else {
-   echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+//   echo "Error: " . $sql . "<br>" . mysqli_error($conn);
   $smarty->assign("error","<p>Could not add device, please check if it exists(someone may have only just this second added it)</p>");
   $smarty->display('error.tpl');
   die();
@@ -82,4 +81,24 @@ if (mysqli_query($conn, $sql)) {
 include('getdevices.php');
 
 
+
+$sql = "SELECT * FROM room_assigns WHERE roomid='$roomid'";
+        $result_room = $conn->query($sql_room);
+        if ($result_room->num_rows > 0) {
+            // output data of each row
+            while($row_room = $result_room->fetch_assoc()) {
+
+		    $ra_userid=$row['userid'];
+		    $sql = "SELECT first_name, last_name FROM users WHERE userid='$ra_userid' limit 1";
+        	    $result2 = $conn->query($sql);
+        	    $row2 = $result2->fetch_assoc();
+        	    $user['first_name']=$row2['first_name'];
+        	    $user['last_name']=$row2['last_name'];
+		$users_in_room[$ra_userid]=$user;
+	    }
+     	} else {
+		$smarty->assign("non_assigned","non_assigned");
+	}
+
+$smarty->assign("users_in_room",$users_in_room);
 $smarty->display('room.tpl');

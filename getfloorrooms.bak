@@ -1,7 +1,7 @@
 <?php
 
 if ($_SESSION['loggedin']=="1") {
-  $username=$_SESSION['username'];
+  $username=$_SESSION['username']; 
   $userid=$_SESSION['userid'];
   $first_name=$_SESSION['first_name'];
   $last_name=$_SESSION['last_name'];
@@ -29,19 +29,10 @@ if ($result->num_rows > 0) {
 	   unset($rooms);
             // output data of each row
             while($row_room = $result_room->fetch_assoc()) {
-
-                $roomid=$row_room['roomid'];
                 $room['id']=$row_room['roomid'];
                 $room['name']=$row_room['roomname'];
-            $sql = "SELECT room_assign_id FROM room_assigns WHERE roomid='$roomid' AND userid='$userid' limit 1";
-            $result2 = $conn->query($sql);
-
-              
-              if ($result2->num_rows > 0) {
                 $rooms[$room['id']]=$room;
                 $allrooms[$room['id']]=$room;
-              }
-
             }
           }
 $floor['id']=$floorid;

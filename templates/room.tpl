@@ -36,9 +36,16 @@
 <div class="row">
 <p>Please note: Any devices added or deleted will change on everyone's phone who is on this page</p>
 <p>changed devices and graphs will only appear on other people's phones when the page is refreshed</p>
+
+{if $non_assigned eq 'non_assigned'}
 <p><b>This room should ONLY be done by</p>
-<p>PERSON NAME</b></p>
-        <div class="col-sm-2">
+{foreach from=$users_in_room item=user_in_room key=userid}
+  <p><b>{$user_in_room.first_name}</b>{$user_in_room.last_name}</p>
+{/foreach}
+{else}
+  <p><b>**No one should do this room without asking a Lantech Manager or Senior Technician.</b></p>
+{/if}
+<div class="col-sm-2">
             <label for = "workingpie"> Devices by status <br />
             <canvas id="workingpie" width="100" height="100"></canvas>
             <script>

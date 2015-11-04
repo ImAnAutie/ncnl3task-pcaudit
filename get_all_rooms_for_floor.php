@@ -12,11 +12,13 @@ if ($result->num_rows > 0) {
                 $room['id']=$row['roomid'];
                 $room['name']=$row['roomname'];
                     $sql2 = "SELECT * FROM room_assigns WHERE roomid='$room_id'";
+			echo $sql2;
                     $result2 = $conn->query($sql2);
                     if ($result2->num_rows > 0) {
                       // output data of each row
                       unset($assigns);
                       while($row2 = $result2->fetch_assoc()) {
+                      unset($assign);
                         $a_userid=$row2['userid'];
 
                         $sql = "SELECT first_name, last_name FROM users WHERE userid='$a_userid' limit 1";
@@ -30,10 +32,13 @@ if ($result->num_rows > 0) {
                   }
 }
                       $room['assigns']=$assigns;
-
+			unset($assigns);
+			unset($assign);
 
                 $flr_rooms[$room['id']]=$room;
 }
 }
 $floor['rooms']=$flr_rooms;
 $smarty->assign("floor_rooms", $floor);
+//print_r($flr_rooms);
+//die();
