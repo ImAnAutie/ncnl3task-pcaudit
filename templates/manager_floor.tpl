@@ -84,7 +84,24 @@
 <div id="ROOM_{$roomid}">
 <h3><b>{$room.name}</b></h3>
 
-<a href="manager_room.php"?id={$roomid}"><button id="manage_room_{$roomid}" name="{$roomid}" class="btn btn-primary">Manage {$room.name}</button></a>
+<table style="width:100%">
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th></th>
+  </tr>
+
+  {foreach from=$room.assigns item=assign key=assignid}
+    <tr>
+      <td>{$assign.first_name}</td>
+      <td>{$assign.last_name}</td>
+      <td><a href="manager_assign_delete.php?id={$assignid}"><button id="delete_assign_{$assignid}" name="delete_assign_{$assignid}" class="btn btn-primary">Remove Assignment</button></a></td>
+  </tr>
+  {/foreach}
+</table>
+
+
+<a href="manager_room.php?id={$roomid}"><button id="manage_room_{$roomid}" name="{$roomid}" class="btn btn-primary">Manage {$room.name}</button></a>
 
 <a href="manager_delete_room.php?id={$roomid}"><button id="delete_room_{$roomid}" name="{$roomid}" class="btn btn-danger">DELETE {$room.name}</button></a>
 
