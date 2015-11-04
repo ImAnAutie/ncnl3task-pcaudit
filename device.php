@@ -5,10 +5,7 @@
  * @package pcaudit
  */
 
-require 'libs/Smarty.class.php';
 require_once('config.php');
-$smarty = new Smarty;
-
 
 include('getfloorrooms.php');
 include('getdevicetypes.php');
@@ -22,6 +19,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   $make=$_POST['make'];
   $working=$_POST['working'];
   $comment=$_POST['comment'];
+  $comment=mysqli_real_escape_string($conn, $comment);
+
   if (empty($hbnumber)) {
     $smarty->assign("error","<p>HB Number empty</p>");
     $smarty->display('error.tpl');

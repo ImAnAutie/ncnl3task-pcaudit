@@ -34,6 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
   $make=$_POST['make'];
   $working=$_POST['working'];
   $comment=$_POST['comment'];
+  $comment = mysqli_real_escape_string($conn, $comment);
+
   if (empty($hbnumber)) {
     $smarty->assign("error","<p>HB Number empty</p>");
     $smarty->display('error.tpl');
