@@ -56,14 +56,18 @@ if (mysqli_query($conn, $sql)) {
       } else {
               $newdevicenotification['working']="Faulty";
       }
-      $sql = "SELECT user_name FROM users WHERE userid='$userid' limit 1";
+      $sql = "SELECT first_name,last_name FROM users WHERE userid='$userid' limit 1";
       $result2 = $conn->query($sql);
       $row2 = $result2->fetch_assoc();
-      $newdevicenotification['username']=$row2['user_name'];
+      $newdevicenotification['first_name']=$row2['first_name'];
+      $newdevicenotification['last_name']=$row2['last_name'];
       $newdevicenotification['userid']=$userid;
       $newdevicenotification['roomid']=$roomid;
+      print_r($newdevicenotification);
+      echo ("<br />");
       $pubnub->setAuthKey($key);
       print_r($pubnub->publish('device_add',$newdevicenotification));
+      die();
       $url="room.php?id=$roomid&justdone=1";
       header("Location: $url");
       die();

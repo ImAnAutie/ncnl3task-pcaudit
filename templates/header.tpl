@@ -111,7 +111,7 @@
     <td>{{make}}</td>
     <td>{{comment}}</td>
     <td>{{working}}</td>
-    <td><a href="user.php?id={{userid}}">{{username}}</a></td>
+    <td><a href="user.php?id={{userid}}">{{first_name}} {{last_name}}</a></td>
     <td><a href="deletedevice.php?id={{id}}&roomid={{roomid}}"><button id="delete" name="delete" class="btn btn-danger">DELETE</button></a></td>
   </tr>
 </script>
@@ -139,11 +139,12 @@ pubnub.subscribe({
     roomid=m['roomid']
     typename=m['typename']
     userid=m['userid']
-    username=m['username']
+    first_name=m['first_name']
+    last_name=m['last_name']
     working=m['working']
      var source   = $("#device-listing-template").html();
      var device_listing_template = Handlebars.compile(source);
-     var context = {hbnumber: hb_number, id: id,type: typename,make: makename,comment: comment,working: working, userid: userid, username:username, roomid: roomid};
+     var context = {hbnumber: hb_number, id: id,type: typename,make: makename,comment: comment,working: working, userid: userid, first_name:first_name, last_name:last_name, roomid: roomid};
     var html    = device_listing_template(context);
     {/literal}
     if (roomid ==
@@ -192,6 +193,7 @@ pubnub.subscribe({
 <script>
 pubnub.subscribe({
     channel: 'broadcastmessage',
+    disconnect : function() {swal("Connection lost","The connection to the server has been lost. Please check your connection and then refresh the page. If it continue's please speak to Gregory","error")}, 
     message: function(m){
         if (m['title']) {
           console.log(m);
