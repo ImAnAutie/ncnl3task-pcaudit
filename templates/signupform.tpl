@@ -14,12 +14,14 @@
   </div>
 </div>
 
+<br />
+
 <!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="username">Username</label>
   <div class="col-md-4">
   <input id="username" name="username" type="text" placeholder="Username" class="form-control input-md">
-  <span class="help-block">Please put your first name in your username somewhere. {if $error.EMPTY_USERNAME eq 'EMPTY_USERNAME'} You need to enter a username.{/if}</span>
+  <span class="help-block"> {if $error.EMPTY_USERNAME eq 'EMPTY_USERNAME'} You need to enter a username.{/if}</span>
   </div>
 </div>
 
@@ -28,7 +30,26 @@
   <label class="col-md-4 control-label" for="password">Password</label>
   <div class="col-md-4">
     <input id="password" name="password" type="password" placeholder="Password" class="form-control input-md">
-  <span class="help-block">Please think of a password. {if $error.EMPTY_PASSWORD eq 'EMPTY_PASSWORD'} You need to enter a password.{/if}</span>
+  <span class="help-block">{if $error.EMPTY_PASSWORD eq 'EMPTY_PASSWORD'} You need to enter a password.{/if}</span>
+  </div>
+</div>
+
+<br />
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="first_name">First Name</label>
+  <div class="col-md-4">
+  <input id="first_name" name="first_name" type="text" placeholder="First Name" class="form-control input-md">
+  <span class="help-block">{if $error.EMPTY_FIRST_NAME eq 'EMPTY_FIRST_NAME'} You need to enter a First Name.{/if}</span>
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="last_name">Last Name</label>
+  <div class="col-md-4">
+  <input id="last_name" name="last_name" type="text" placeholder="Last Name" class="form-control input-md">
+  <span class="help-block">{if $error.EMPTY_LAST_NAME eq 'EMPTY_LAST_NAME'} You need to enter a Last Name.{/if}</span>
   </div>
 </div>
 

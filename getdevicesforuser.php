@@ -40,10 +40,11 @@ if ($result->num_rows > 0) {
             $device['userid']=$userid;
             $roomid=$row['roomid'];
             $device['roomid']=$roomid;
-            $sql = "SELECT user_name FROM users WHERE userid='$userid' limit 1";
+            $sql = "SELECT first_name, last_name FROM users WHERE userid='$userid' limit 1";
             $result2 = $conn->query($sql);
             $row2 = $result2->fetch_assoc();
-            $device['username']=$row2['user_name'];
+            $device['first_name']=$row2['first_name'];
+            $device['last_name']=$row2['last_name'];
             $devices[]=$device;
     }
 }

@@ -16,6 +16,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST'){
 $authcode=$_POST['authcode'];
   $username=$_POST['username'];
   $password=$_POST['password'];
+  
+$first_name=$_POST['first_name'];
+$last_name=$_POST['last_name'];
+
 if (empty($authcode)) {
    $error["EMPTY_AUTHCODE"]="EMPTY_AUTHCODE";
 }
@@ -30,10 +34,18 @@ if (empty($username)) {
 if (empty($password)) {
    $error["EMPTY_PASSWORD"]="EMPTY_PASSWORD";
 }
+  
+if (empty($first_name)) {
+   $error["EMPTY_FIRST_NAME"]="EMPTY_FIRST_NAME";
+}
+
+if (empty($last_name)) {
+   $error["EMPTY_LAST_NAME"]="EMPTY_LAST_NAME";
+}
 
 if (empty($error)) {
   $hashedpassword=password_hash($password, PASSWORD_DEFAULT);
-  $sql = "INSERT INTO users (user_name, user_password) VALUES ('$username','$hashedpassword')";
+  $sql = "INSERT INTO users (user_name, user_password, first_name, last_name) VALUES ('$username','$hashedpassword', '$first_name', '$last_name')";
       if (mysqli_query($conn, $sql)) {
           $userid=mysqli_insert_id($conn);
 
@@ -50,6 +62,9 @@ if (empty($error)) {
           $_SESSION['loggedin']="1";
           $_SESSION['userid']=$userid;
           $_SESSION['username']=$username;
+          $_SESSION['first_name']=$first_name;
+          $_SESSION['last_name']=$last_name;
+        
           $url="index.php";
           header('HTTP/1.1 301 Moved Permanently');
           header('Location: ' . $url);

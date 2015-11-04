@@ -64,7 +64,7 @@
                 var totalbytypectx = $("#totalbytype").get(0).getContext("2d");
 
 
-$.get( "gettotalbytypes.php?roomid={$roomid}")
+$.get( "gettotalbytypes_for_user.php?id={$f_user_id}")
   .done(function( data ) {
 totalbytypedata=JSON.parse(data);
   console.log(totalbytypedata);
@@ -79,7 +79,7 @@ totalbytypedata=JSON.parse(data);
 
             </div>
                 <hr />
-                <h3>Devices {$first_name} has added</h3>
+                <h3>Devices {$f_first_name} has added</h3>
                 {include file='listdevices.tpl'}
                 <hr>
         </div>
