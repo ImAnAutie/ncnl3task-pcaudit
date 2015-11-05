@@ -51,6 +51,7 @@
                 </h1>
                 <h3>Message broadcast</h3>
                 <p>This will broadcast a message to all users</p>
+		<p>To reset(aka stop it keep popping up), send a message but leave the title and content field blank.</p>
             </div>
 
 <div class="row">

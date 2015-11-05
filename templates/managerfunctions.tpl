@@ -34,6 +34,7 @@
                 </h1>
                   <h3>From here you can manage {#appname#}</h3>
                   <p>You can add/remove people to/from rooms and add rooms</p>
+<a href="broadcastmessage.php"><button id="broadcastmessage" name="broadcastmessage" class="btn btn-primary">Broadcast Message</button></a>
 </div>
 
 
